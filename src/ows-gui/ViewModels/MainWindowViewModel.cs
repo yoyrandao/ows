@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using NonInvasiveKeyboardHookLibrary;
 using Ows.Dto;
-using Ows.LowLevel;
 using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
 
 namespace Ows.ViewModels;
@@ -31,16 +24,6 @@ internal class MainWindowViewModel : ObservableRecipient
 		_hookManager.Start();
 		_hookManager.RegisterHotkey(new[] { ModifierKeys.Control, ModifierKeys.Alt }, 0x57,
 			() => { WindowState = WindowState.Normal; });
-
-		var names = new List<string>();
-		var procs = Process.GetProcesses().Where(p => p.Id > 4 && LowLevelMethods.IsTrueWindow(p.MainWindowHandle)).ToArray();
-		
-		foreach (var proc in procs)
-		{
-			names.Add(proc.MainWindowTitle);
-		}
-		
-		Console.Out.WriteLine(names.Count);
 	}
 
 	public ICommand LoadedCommand { get; }

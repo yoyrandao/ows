@@ -9,6 +9,13 @@
     #define TWINDOWS_API __declspec(dllimport)
 #endif
 
-// Checking for "true" window.
-// "True" window is a window that showing in alt-tab interface
+/**
+ * Checks for "truthness" of window.
+ *
+ * "Truthness" is a condition when process has an active window which is not an overlay.
+ * Also process should have an active window title which is not equals empty string.
+ *
+ * @param hWnd Window handle.
+ * @return is the window with provided handle need to show in alt-tab interface.
+ */
 extern "C" TWINDOWS_API bool IsTrueWindow(HWND hWnd);

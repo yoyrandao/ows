@@ -19,9 +19,13 @@
 
     <ItemGroup>
       <None Remove="ows-window-api.dll" />
-      <Content Include="ows-window-api.dll">
+    </ItemGroup>
+
+    <ItemGroup>
+      <ContentWithTargetPath Include="External\ows-window-api.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+        <TargetPath>ows-window-api.dll</TargetPath>
+      </ContentWithTargetPath>
     </ItemGroup>
 
 </Project>
