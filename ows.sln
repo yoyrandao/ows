@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ows-gui", "src\ows-gui\ows-gui.csproj", "{4B067EF1-1BEB-462E-B587-51BE5255D9BA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ows-window-api", "src\ows-window-api\ows-window-api.vcxproj", "{F64BB234-B1C2-467B-9D6B-1821315B6C83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B067EF1-1BEB-462E-B587-51BE5255D9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B067EF1-1BEB-462E-B587-51BE5255D9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B067EF1-1BEB-462E-B587-51BE5255D9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B067EF1-1BEB-462E-B587-51BE5255D9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64BB234-B1C2-467B-9D6B-1821315B6C83}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{F64BB234-B1C2-467B-9D6B-1821315B6C83}.Debug|Any CPU.Build.0 = Debug|Win32
+		{F64BB234-B1C2-467B-9D6B-1821315B6C83}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F64BB234-B1C2-467B-9D6B-1821315B6C83}.Release|Any CPU.Build.0 = Release|Win32
+	EndGlobalSection
+EndGlobal
