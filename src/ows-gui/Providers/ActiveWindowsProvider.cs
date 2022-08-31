@@ -17,7 +17,7 @@ internal class ActiveWindowsProvider
 
 		return activeProcesses.Select(process => new ActiveWindow
 		{
-			hWnd = process.MainWindowHandle,
+			HWnd = process.MainWindowHandle,
 			ProcessName = process.ProcessName,
 			WindowTitle = process.MainWindowTitle
 		});

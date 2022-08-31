@@ -4,7 +4,7 @@ namespace Ows.Dto;
 
 internal record ActiveWindow
 {
-	public IntPtr hWnd { get; init; }
+	public IntPtr HWnd { get; init; }
 	
 	public string ProcessName { get; init; }
 	
