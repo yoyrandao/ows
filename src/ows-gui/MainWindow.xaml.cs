@@ -7,39 +7,39 @@ namespace Ows;
 
 public partial class MainWindow : Window
 {
-    public MainWindow()
-    {
-        InitializeComponent();
-    }
+	public MainWindow()
+	{
+		InitializeComponent();
+	}
 
-    private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
-    {
-    }
+	private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
+	{
+	}
 
-    private void MainWindow_OnStateChanged(object? sender, EventArgs e)
-    {
-        if (sender is not Window window) return;
+	private void MainWindow_OnStateChanged(object? sender, EventArgs e)
+	{
+		if (sender is not Window window) return;
 
-        if (window.WindowState == WindowState.Normal)
-        {
-            window.Activate();
-            search.Focus();
-        }
-    }
+		if (window.WindowState == WindowState.Normal)
+		{
+			window.Activate();
+			search.Focus();
+		}
+	}
 
-    private void MainWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
-    {
-        if (sender is not Window window) return;
-        if (e.Key == Key.Escape)
-        {
-            window.WindowState = WindowState.Minimized;
-        }
-    }
+	private void MainWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
+	{
+		if (sender is not Window window) return;
+		if (e.Key == Key.Escape)
+		{
+			window.WindowState = WindowState.Minimized;
+		}
+	}
 
-    private void Window_Deactivated(object sender, EventArgs e)
-    {
-        if (sender is not Window window) return;
+	private void Window_Deactivated(object sender, EventArgs e)
+	{
+		if (sender is not Window window) return;
 
-        window.WindowState = WindowState.Minimized;
-    }
+		window.WindowState = WindowState.Minimized;
+	}
 }

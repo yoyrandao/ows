@@ -11,5 +11,5 @@ internal record ActiveWindow
 	
 	public string WindowTitle { get; init; }
 
-	public ImageSource? ImageSource { get; set; }
+	public ImageSource? ImageSource { get; set; } = null;
 }

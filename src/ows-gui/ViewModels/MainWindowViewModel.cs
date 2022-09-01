@@ -54,10 +54,10 @@ internal class MainWindowViewModel : ObservableRecipient
 	}
 
 	public List<ActiveWindow> ActiveWindows
-    {
+	{
 		get => _activeWindows;
 		set => SetProperty(ref _activeWindows, value);
-    }
+	}
 
 	public bool ShowInTaskbar
 	{
@@ -72,18 +72,18 @@ internal class MainWindowViewModel : ObservableRecipient
 	}
 
 	private void OnWindowActivated()
-    {
+	{
 		ActiveWindows = new(ActiveWindowsProvider.GetActiveWindows());
 	}
 
 	private void MakeActive(ActiveWindow window)
-    {
+	{
 		Interop.SetForegroundWindow(window.HWnd);
 		WindowState = WindowState.Minimized;
 	}
 
 	private void ShowWindow()
-    {
+	{
 		WindowState = WindowState.Normal;
 	}
 
@@ -117,6 +117,6 @@ internal class MainWindowViewModel : ObservableRecipient
 
 	private bool _showInTaskbar;
 	private WindowState _windowState;
-    private List<ActiveWindow> _activeWindows;
-    private readonly KeyboardHookManager _hookManager;
+	private List<ActiveWindow> _activeWindows;
+	private readonly KeyboardHookManager _hookManager;
 }
