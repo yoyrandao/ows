@@ -37,7 +37,7 @@
 				</b:EventTrigger>
 			</b:Interaction.Triggers>
 		</ows:NotifyIconWrapper>
-		<TextBox TextChanged="TextBoxBase_OnTextChanged"  Width="100" Height="50" x:Name="search" />
+		<TextBox Width="100" Height="50" x:Name="search" />
 		<ListBox x:Name="ProcList"
                  ItemsSource="{Binding ActiveWindows}" >
 			<b:Interaction.Triggers>

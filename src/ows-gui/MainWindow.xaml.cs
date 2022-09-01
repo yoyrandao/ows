@@ -12,10 +12,6 @@ public partial class MainWindow : Window
 		InitializeComponent();
 	}
 
-	private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
-	{
-	}
-
 	private void MainWindow_OnStateChanged(object? sender, EventArgs e)
 	{
 		if (sender is not Window window) return;
