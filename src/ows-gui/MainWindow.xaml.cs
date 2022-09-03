@@ -12,16 +12,13 @@ public partial class MainWindow : Window
 		InitializeComponent();
 	}
 
-	private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
-	{
-	}
-
 	private void MainWindow_OnStateChanged(object? sender, EventArgs e)
 	{
 		if (sender is not Window window) return;
 
 		if (window.WindowState == WindowState.Normal)
 		{
+			window.Activate();
 			search.Focus();
 		}
 	}
@@ -33,5 +30,12 @@ public partial class MainWindow : Window
 		{
 			window.WindowState = WindowState.Minimized;
 		}
+	}
+
+	private void Window_Deactivated(object sender, EventArgs e)
+	{
+		if (sender is not Window window) return;
+
+		window.WindowState = WindowState.Minimized;
 	}
 }

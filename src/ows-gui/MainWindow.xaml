@@ -9,33 +9,52 @@
         mc:Ignorable="d"
         ShowInTaskbar="{Binding ShowInTaskbar}"
         WindowState="{Binding WindowState}"
+        d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         StateChanged="MainWindow_OnStateChanged"
-        PreviewKeyDown="MainWindow_OnPreviewKeyDown">
-    <Window.DataContext>
-        <viewModels:MainWindowViewModel/>
-    </Window.DataContext>
-    <Grid>
-        <ows:NotifyIconWrapper NotifyRequest="{Binding NotifyRequest}">
-            <b:Interaction.Triggers>
-                <b:EventTrigger EventName="OpenSelected">
-                    <b:InvokeCommandAction Command="{Binding NotifyIconOpenCommand}"/>
-                </b:EventTrigger>
-                <b:EventTrigger EventName="ExitSelected">
-                    <b:InvokeCommandAction Command="{Binding NotifyIconExitCommand}"/>
-                </b:EventTrigger>
-            </b:Interaction.Triggers>
-        </ows:NotifyIconWrapper>
-        <TextBox TextChanged="TextBoxBase_OnTextChanged"  Width="100" Height="50" x:Name="search"></TextBox>
-        <!-- <Button Content="Notify" Margin="10" Width="100" Height="50" Command="{Binding NotifyCommand}"/> -->
-    </Grid>
-    <b:Interaction.Triggers>
-        <b:EventTrigger EventName="Loaded">
-            <b:InvokeCommandAction Command="{Binding LoadedCommand}"/>
-        </b:EventTrigger>
-        <b:EventTrigger EventName="Closing">
-            <b:InvokeCommandAction Command="{Binding ClosingCommand}" PassEventArgsToCommand="True"/>
-        </b:EventTrigger>
-    </b:Interaction.Triggers>
+        PreviewKeyDown="MainWindow_OnPreviewKeyDown"
+        Deactivated="Window_Deactivated">
+	<b:Interaction.Triggers>
+		<b:EventTrigger EventName="Loaded">
+			<b:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+		</b:EventTrigger>
+		<b:EventTrigger EventName="Closing">
+			<b:InvokeCommandAction Command="{Binding ClosingCommand}" PassEventArgsToCommand="True"/>
+		</b:EventTrigger>
+		<b:EventTrigger EventName="Activated">
+			<b:InvokeCommandAction Command="{Binding ActivatedCommand}"/>
+		</b:EventTrigger>
+	</b:Interaction.Triggers>
+	<StackPanel>
+		<ows:NotifyIconWrapper NotifyRequest="{Binding NotifyRequest}">
+			<b:Interaction.Triggers>
+				<b:EventTrigger EventName="OpenSelected">
+					<b:InvokeCommandAction Command="{Binding NotifyIconOpenCommand}"/>
+				</b:EventTrigger>
+				<b:EventTrigger EventName="ExitSelected">
+					<b:InvokeCommandAction Command="{Binding NotifyIconExitCommand}"/>
+				</b:EventTrigger>
+			</b:Interaction.Triggers>
+		</ows:NotifyIconWrapper>
+		<TextBox Width="100" Height="50" x:Name="search" />
+		<ListBox x:Name="ProcList"
+                 ItemsSource="{Binding ActiveWindows}" >
+			<b:Interaction.Triggers>
+				<b:EventTrigger EventName="MouseDoubleClick">
+					<b:InvokeCommandAction Command="{Binding MakeActiveCommand}"
+                                           CommandParameter="{Binding SelectedItem, ElementName=ProcList}"/>
+				</b:EventTrigger>
+			</b:Interaction.Triggers>
+			<ListBox.ItemTemplate>
+				<ItemContainerTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Image Source="{Binding ImageSource}"/>
+						<TextBlock Text="{Binding WindowTitle}"/>
+					</StackPanel>
+				</ItemContainerTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<Button Content="Notify" Margin="10" Width="100" Height="50" Command="{Binding NotifyCommand}"/>
+	</StackPanel>
 </Window>
